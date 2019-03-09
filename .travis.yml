@@ -1,0 +1,38 @@
+## See https://travis-ci.com/M-Razavi/JavaPersianUtils.Core
+language: java
+
+## export GPG details
+before_install:
+    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+
+install:
+    mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+
+## Build and release to maven central
+script:
+    mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
+
+## Get the project version
+before_deploy:
+    - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+    - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+
+## Create release in GitHub
+deploy:
+  provider: releases
+  api_key:
+    secure: Qo1J0nuS60W8Ol/yqHctAXaMxfcR5MDnJD72/N/W4veF9/bP5cOViZB4n43V4OF1/XUEm2Or6nldvjRPGz4oCsIRj3sUQGsYwkUgsZRBTEoC4dsrfHwrVIlyYBMz0dIadXabwKbZfS4LipN6J0v6k921UJHIjC+/Sf0KqeCgQseC8h4glcSPfmOIsk6g1xNydpFa4Z0G1/Ykr9NpmNtTYnJkfqwwKlxbhCL0tXFDOFiwSDTP+pu+BtvCu6KQBwIPRyQ6g0WoRsHUMguXdCoEBc+tRgZUECS2s3SLO6AWQTVm8l9mFdALscsHSskXHmaUMUNtl79Zpx+O00Cv3Ru6P8FVzP5sohleKO0qn/wyYyhzJLd9k0AuQWzRupjPR8nGUKjPXknX2SpEVQychM59MHGCyoPXagAlBJWtAuxYGijxO9WoTwF1mW7eE0F1a5jHfYxXJDAzD6yf0U/RdwLsDP37SOvaxh/oHoEdhBBOa9L8WNtgAo04VxKHEH5K8BVErUfpDvHv1TQA15qmvfvSvNtqMhK8Z0Ew8G8powPwAVUXP8ohrzQhLv9TtH0LiFcsGywfn9ZBuY4P/y3TGq38793oHvxUpkyDRfuy9yAHaADVndP5ZxMmuIZNS/nYG4RHeEz16yo9cH7ziSKhKL4tyUX+WOQQqXSd0pvin4G12vU=
+  file:
+             - target/core-$project_version.jar
+             - target/core-$project_version-sources.jar
+  skip_cleanup: true
+  draft: true
+  name: $project_version
+  on:
+    repo: m-razavi/JavaPersianUtils.Core
+
+
+cache:
+  directories:
+  - ~/.m2/repository
