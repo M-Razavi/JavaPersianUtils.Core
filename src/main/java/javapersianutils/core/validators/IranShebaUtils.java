@@ -10,16 +10,18 @@ import static javapersianutils.core.validators.StringUtil.isNullOrEmpty;
  */
 public class IranShebaUtils {
 
-
     private static final Pattern _matchIranSheba = Pattern.compile("IR[0-9]{24}", Pattern.CASE_INSENSITIVE);
+
+    private IranShebaUtils() {
+    }
 
     /**
      * Validate IBAN (International Bank Account Number, Sheba)
      *
      * @param iban International Bank Account Number, Sheba
-     * @return
+     * @return result
      */
-    public static boolean IsValidIranShebaNumber(String iban) {
+    public static boolean isValidIranShebaNumber(String iban) {
         if (isNullOrEmpty(iban)) {
             return false;
         }

@@ -13,7 +13,7 @@ class IranShetabUtilsTest {
                     "636214-1075165358",
                     "6274129005473742"})
     public void ValidIranShetabCodesTest(String code) {
-        Assertions.assertTrue(IranShetabUtils.IsValidIranShetabNumber(code));
+        Assertions.assertTrue(IranShetabUtils.isValidIranShetabNumber(code));
     }
 
 
@@ -23,7 +23,7 @@ class IranShetabUtilsTest {
                     "627412900742",
                     "62741290054737423252"})
     public void InvalidIranShetabCodesTest(String code) {
-        Assertions.assertFalse(IranShetabUtils.IsValidIranShetabNumber(code));
+        Assertions.assertFalse(IranShetabUtils.isValidIranShetabNumber(code));
     }
 
 }

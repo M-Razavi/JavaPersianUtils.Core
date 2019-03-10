@@ -2,6 +2,8 @@ package javapersianutils.core.normalizer;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.UnsupportedEncodingException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -43,7 +45,7 @@ class AggressiveEditingTest {
 
 
     @Test
-    void convertArabic1256ToUtf8() {
+    void convertArabic1256ToUtf8() throws UnsupportedEncodingException {
         assertEquals("??????????",AggressiveEditing.convertArabic1256ToUtf8("رحــــــيم"));
 
     }

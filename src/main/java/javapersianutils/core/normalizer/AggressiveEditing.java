@@ -13,15 +13,11 @@ import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
  * replace all more than one ! or ? marks with just one or removes all extra kashida and spaces
  */
 public class AggressiveEditing {
-
     private static final Pattern _matchCleanupExtraMarks1 = Pattern.compile("(!){2,}", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchCleanupExtraMarks2 = Pattern.compile("(؟){2,}", Pattern.CASE_INSENSITIVE);
-
     private static final Pattern _matchCleanupSpacingAndLineBreaks1 = Pattern.compile("[ ]+", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchCleanupSpacingAndLineBreaks2 = Pattern.compile("([\n]+)[   ‌]*", Pattern.CASE_INSENSITIVE);
-
     private static final Pattern _matchRemoveAllKashida = Pattern.compile("ـ+", Pattern.CASE_INSENSITIVE);
-
     private static final Pattern _matchRemoveOutsideInsideSpacing1 = Pattern.compile("[   ‌]*(\\()\\s*([^)]+?)\\s*?(\\))[   ‌]*", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchRemoveOutsideInsideSpacing10 = Pattern.compile("(\\{)\\s*([^)]+?)\\s*?(\\})", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchRemoveOutsideInsideSpacing11 = Pattern.compile("(“)\\s*([^)]+?)\\s*?(”)", Pattern.CASE_INSENSITIVE);
@@ -34,8 +30,10 @@ public class AggressiveEditing {
     private static final Pattern _matchRemoveOutsideInsideSpacing7 = Pattern.compile("([0-9]+):\\s+([0-9]+)", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchRemoveOutsideInsideSpacing8 = Pattern.compile("(\\()\\s*([^)]+?)\\s*?(\\))", Pattern.CASE_INSENSITIVE);
     private static final Pattern _matchRemoveOutsideInsideSpacing9 = Pattern.compile("(\\[)\\s*([^)]+?)\\s*?(\\])", Pattern.CASE_INSENSITIVE);
-
     private static final Pattern _matchHexadecimalSymbols = Pattern.compile("[\\x00-\\x08\\x0B\\x0C\\x0E-\\x1F]", Pattern.CASE_INSENSITIVE);
+
+    private AggressiveEditing() {
+    }
 
     /**
      * Removes all kashida
@@ -67,12 +65,13 @@ public class AggressiveEditing {
      * @return Processed Text
      */
     public static String normalizeOutsideInsideSpacing(String text) {
-        //should fix outside and inside spacing for () [] {}  “” «»
-        String phase1 = _matchRemoveOutsideInsideSpacing1.matcher(text).replaceAll(" $1$2$3 ");
-        String phase2 = _matchRemoveOutsideInsideSpacing2.matcher(phase1).replaceAll(" $1$2$3 ");
-        String phase3 = _matchRemoveOutsideInsideSpacing3.matcher(phase2).replaceAll(" $1$2$3 ");
-        String phase4 = _matchRemoveOutsideInsideSpacing4.matcher(phase3).replaceAll(" $1$2$3 ");
-        String phase5 = _matchRemoveOutsideInsideSpacing5.matcher(phase4).replaceAll(" $1$2$3 ");
+        //fix outside and inside spacing for () [] {}  “” «»
+        final String replacement = " $1$2$3 ";
+        String phase1 = _matchRemoveOutsideInsideSpacing1.matcher(text).replaceAll(replacement);
+        String phase2 = _matchRemoveOutsideInsideSpacing2.matcher(phase1).replaceAll(replacement);
+        String phase3 = _matchRemoveOutsideInsideSpacing3.matcher(phase2).replaceAll(replacement);
+        String phase4 = _matchRemoveOutsideInsideSpacing4.matcher(phase3).replaceAll(replacement);
+        String phase5 = _matchRemoveOutsideInsideSpacing5.matcher(phase4).replaceAll(replacement);
 
         // : ; , . ! ? and their Persian equivalents should have one space after and no space before
         String phase6 = _matchRemoveOutsideInsideSpacing6.matcher(phase5).replaceAll("$1 ");
@@ -80,12 +79,13 @@ public class AggressiveEditing {
         // do not put space after colon that separates time parts
         String phase7 = _matchRemoveOutsideInsideSpacing7.matcher(phase6).replaceAll("$1:$2");
 
-        //should fix inside spacing for () [] {}  “” «»
-        String phase8 = _matchRemoveOutsideInsideSpacing8.matcher(phase7).replaceAll("$1$2$3");
-        String phase9 = _matchRemoveOutsideInsideSpacing9.matcher(phase8).replaceAll("$1$2$3");
-        String phase10 = _matchRemoveOutsideInsideSpacing10.matcher(phase9).replaceAll("$1$2$3");
-        String phase11 = _matchRemoveOutsideInsideSpacing11.matcher(phase10).replaceAll("$1$2$3");
-        String phase12 = _matchRemoveOutsideInsideSpacing12.matcher(phase11).replaceAll("$1$2$3");
+        //fix inside spacing for () [] {}  “” «»
+        final String replacement2 = "$1$2$3";
+        String phase8 = _matchRemoveOutsideInsideSpacing8.matcher(phase7).replaceAll(replacement2);
+        String phase9 = _matchRemoveOutsideInsideSpacing9.matcher(phase8).replaceAll(replacement2);
+        String phase10 = _matchRemoveOutsideInsideSpacing10.matcher(phase9).replaceAll(replacement2);
+        String phase11 = _matchRemoveOutsideInsideSpacing11.matcher(phase10).replaceAll(replacement2);
+        String phase12 = _matchRemoveOutsideInsideSpacing12.matcher(phase11).replaceAll(replacement2);
 
         return phase12.trim();
     }
@@ -127,25 +127,21 @@ public class AggressiveEditing {
      * @param text Text to process
      * @return Processed Text
      */
-    public static String removeHexadecimalSymbols(String txt) {
-        return isNullOrWhiteSpace(txt) ?
-                "" : _matchHexadecimalSymbols.matcher(txt).replaceAll("");
+    public static String removeHexadecimalSymbols(String text) {
+        return isNullOrWhiteSpace(text) ?
+                "" : _matchHexadecimalSymbols.matcher(text).replaceAll("");
     }
 
     /**
      * Convert an ASCII Arabic text to Unicode
      *
-     * @param text
-     * @return
+     * @param text the text
+     * @return string
+     * @throws UnsupportedEncodingException the unsupported encoding exception
      */
-    public static String convertArabic1256ToUtf8(String text) {
-        String string = new StringEscapeUtils().unescapeHtml4(text);
+    public static String convertArabic1256ToUtf8(String text) throws UnsupportedEncodingException {
+        String string = StringEscapeUtils.unescapeHtml4(text);
         byte[] b = string.getBytes(StandardCharsets.ISO_8859_1);
-        try {
             return new String(b, "Windows-1256");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-            return null;
-        }
     }
 }

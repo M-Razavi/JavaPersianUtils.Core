@@ -14,13 +14,16 @@ public class IranShetabUtils {
 
     private static final Pattern _matchIranShetab = Pattern.compile("[0-9]{16}", Pattern.CASE_INSENSITIVE);
 
+    private IranShetabUtils() {
+    }
+
     /**
      * validate Shetab card numbers
      *
      * @param creditCardNumber Shetab card number
-     * @return
+     * @return boolean
      */
-    public static boolean IsValidIranShetabNumber(String creditCardNumber) {
+    public static boolean isValidIranShetabNumber(String creditCardNumber) {
         if (isNullOrEmpty(creditCardNumber)) {
             return false;
         }
@@ -38,14 +41,9 @@ public class IranShetabUtils {
         int sumOfDigits = 0;
         int result = 0;
         for (int i = 1; i <= creditCardNumber.length(); i++) {
-            int number = Integer.parseInt(creditCardNumber.charAt(i-1) + "");
+            int number = Integer.parseInt(creditCardNumber.charAt(i - 1) + "");
             sumOfDigits += ((result = number * (i % 2 == 0 ? 1 : 2)) > 9 ? (result - 9) : result);
         }
-//        int sumOfDigits = creditCardNumber.chars().
-//                .Reverse()
-//                .Select((e, i) =>(e - 48) * (i % 2 == 0 ? 1 : 2))
-//                .Sum(e = > e / 10 + e % 10);
-
         return sumOfDigits % 10 == 0;
     }
 }
