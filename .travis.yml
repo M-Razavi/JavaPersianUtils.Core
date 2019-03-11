@@ -11,7 +11,7 @@ install:
 
 ## Build and release to maven central (deploy only when tags are pushed.)
 script:
-    if: tag IS present
+    if: tag IS present |
       mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
 
 ## Get the project version
