@@ -11,7 +11,7 @@ install:
 
 ## Build and release to maven central (deploy only when tags are pushed.)
 script:
-    if [[ tag IS present ]]; then
+    if [[ $TRAVIS_TAG ]]; then
       mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease;
     fi
 
