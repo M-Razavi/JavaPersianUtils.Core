@@ -30,7 +30,7 @@ class RegexUtilsTest {
                     "؛a",
                     "a؛۹ی"})
     public void Test_ContainsFarsi_Works(String text) {
-        assertTrue(RegexUtils.ContainsFarsi(text));
+        assertTrue(RegexUtils.containsFarsi(text));
     }
 
     @ParameterizedTest(name = "Input text {0} contain Farsi.")
@@ -40,7 +40,7 @@ class RegexUtilsTest {
                     "this-is-not-rtl",
                     "this,is,not,rtl"})
     public void Test_DoesNot_ContainFarsi_Works(String text) {
-        assertFalse(RegexUtils.ContainsFarsi(text));
+        assertFalse(RegexUtils.containsFarsi(text));
     }
 
 
@@ -50,7 +50,7 @@ class RegexUtilsTest {
                     "۴۵۶۷۸",
                     "۹۹۹۹۹"})
     public void Test_ContainsOnlyPersianNumbers_Works(String text) {
-        assertTrue(RegexUtils.ContainsOnlyPersianNumbers(text));
+        assertTrue(RegexUtils.containsOnlyPersianNumbers(text));
     }
 
     @ParameterizedTest(name = "Input text {0} contain Farsi.")
@@ -60,7 +60,7 @@ class RegexUtilsTest {
                     "1",
                     "1234"})
     public void Test_DoesNot_ContainsOnlyPersianNumbers_Works(String text) {
-        assertFalse(RegexUtils.ContainsOnlyPersianNumbers(text));
+        assertFalse(RegexUtils.containsOnlyPersianNumbers(text));
     }
 
     @ParameterizedTest(name = "Input text {0} contain Farsi.")
@@ -69,7 +69,7 @@ class RegexUtilsTest {
                     "تثج",
                     "چحخدذرز"})
     public void Test_ContainsOnlyFarsiLetters_Works(String text) {
-        assertTrue(RegexUtils.ContainsOnlyFarsiLetters(text));
+        assertTrue(RegexUtils.containsOnlyFarsiLetters(text));
     }
 
 
@@ -83,7 +83,7 @@ class RegexUtilsTest {
                     "this-is-not-rtl",
                     "this,is,not,rtl"})
     public void Test_DoesNot_ContainsOnlyFarsiLetters_Works(String text) {
-        assertFalse(RegexUtils.ContainsOnlyFarsiLetters(text));
+        assertFalse(RegexUtils.containsOnlyFarsiLetters(text));
     }
 
 }

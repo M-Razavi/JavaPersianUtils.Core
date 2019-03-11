@@ -25,6 +25,9 @@ hs_err_pid*
 # Generated output
 target/
 
+\.idea/
+
+java-persian-utils\.core\.iml
+
 *.iml
 
-\.idea/

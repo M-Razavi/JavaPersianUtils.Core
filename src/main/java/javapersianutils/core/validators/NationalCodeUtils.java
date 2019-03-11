@@ -9,11 +9,15 @@ import static org.apache.commons.lang3.StringUtils.leftPad;
  * Validate IR National Code
  */
 public class NationalCodeUtils {
+
+    private NationalCodeUtils() {
+    }
+
     /**
      * If String is a number returns true
      *
-     * @param data
-     * @return
+     * @param data the data
+     * @return boolean
      */
     public static boolean isNumber(String data) {
         return !isNullOrWhiteSpace(data) && StringUtils.isNumeric(data);
@@ -22,8 +26,8 @@ public class NationalCodeUtils {
     /**
      * Validate IR National Code
      *
-     * @param nationalCode
-     * @return
+     * @param nationalCode the national code
+     * @return boolean
      */
     public static boolean isValidIranianNationalCode(String nationalCode) {
         if (isNullOrWhiteSpace(nationalCode)) {

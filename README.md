@@ -2,22 +2,25 @@
 =======
 <div dir="rtl">
 
- [![build_status](https://api.travis-ci.com/M-Razavi/JavaPersianUtils.Core.svg?branch=master)](https://travis-ci.com/M-Razavi/JavaPersianUtils.Core)
- [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.m-razavi/java-persian-utils.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.m-razavi/java-persian-utils.core)
- [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/com.github.m-razavi/java-persian-utils.core/master/LICENSE.txt)
- [![Javadocs](https://www.javadoc.io/badge/com.github.m-razavi/java-persian-utils.core.svg)](https://www.javadoc.io/doc/com.github.m-razavi/java-persian-utils.core)
+[![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://raw.githubusercontent.com/com.github.m-razavi/java-persian-utils.core/master/LICENSE.txt)
+[![codebeat badge](https://codebeat.co/badges/d873e93d-6ded-46c2-a1d6-5cfa4afa2ae4)](https://codebeat.co/projects/github-com-m-razavi-javapersianutils-core-master)
+[![Coverage Status](https://coveralls.io/repos/github/M-Razavi/JavaPersianUtils.Core/badge.svg)](https://coveralls.io/github/M-Razavi/JavaPersianUtils.Core)
+[![build_status](https://api.travis-ci.com/M-Razavi/JavaPersianUtils.Core.svg?branch=master)](https://travis-ci.com/M-Razavi/JavaPersianUtils.Core)
+[![Javadocs](https://www.javadoc.io/badge/com.github.m-razavi/java-persian-utils.core.svg)](https://www.javadoc.io/doc/com.github.m-razavi/java-persian-utils.core)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.m-razavi/java-persian-utils.core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.m-razavi/java-persian-utils.core)
+
+
 
 [JavaPersianUtils.Core](https://github.com/M-Razavi/JavaPersianUtils.Core) کتابخانه‌ای است متشکل از متدهای الحاقی کمکی جهت کار با فرهنگ فارسی، در برنامه‌های مبتنی بر Java 8.0  و بالاتر است.
-این کتابخانه بر مبنای کتابخانه [DNTPersianUtils.Core]((https://github.com/VahidN/DNTPersianUtils.Core)) توسعه داده شده است.
-و به مرور زمان تمامی مواردی که در آن وجود دارد برای جاوا معادل سازی می گردد.
-برای استفاده از آن میتوانید آنزا از Maven Central در یافت کنید:
+این کتابخانه بر مبنای کتابخانه [DNTPersianUtils.Core](https://github.com/VahidN/DNTPersianUtils.Core) توسعه داده شده است.
+و به مرور  تمامی مواردی که در آن وجود دارد برای جاوا پیاده سازی می گردد.
+برای استفاده از آن میتوانید آنرا از Maven Central در یافت کنید:
 </div>
 
 ```
 <dependency>
   <groupId>com.github.m-razavi</groupId>
   <artifactId>java-persian-utils.core</artifactId>
-  <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
 
