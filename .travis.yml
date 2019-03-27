@@ -11,14 +11,15 @@ install:
 
 ## Build and release to maven central (deploy only when tags are pushed.)
 script:
-    if [[ $TRAVIS_TAG ]]; then
-      mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease;
-    fi
+    # if [[ $TRAVIS_TAG ]]; then
+    mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease;
+    # fi
 
 ## Get the project version
 before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
     - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+	- git tag $project_version
 
 ## Create release in GitHub
 deploy:
@@ -30,7 +31,7 @@ deploy:
   skip_cleanup: true
   name: $project_version
   on:
-    tags: true
+    branch: master
 
 
 cache:
