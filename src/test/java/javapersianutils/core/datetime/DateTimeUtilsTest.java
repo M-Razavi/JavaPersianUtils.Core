@@ -55,4 +55,30 @@ class DateTimeUtilsTest {
         int actualAge = DateTimeUtils.getAge(birthday, LocalDate.now().minusYears(2));
         assertEquals(30, actualAge);
     }
+
+    @Test
+    public void Test_checkOverlap_success() {
+        LocalDateTime t1_start = LocalDateTime.now();
+        LocalDateTime t1_end = LocalDateTime.now().plusHours(1);
+        Interval t1 = new Interval(t1_start, t1_end);
+
+        LocalDateTime t2_start = LocalDateTime.now().plusMinutes(40);
+        LocalDateTime t2_end = LocalDateTime.now().plusHours(2);
+        Interval t2 = new Interval(t2_start, t2_end);
+
+        assertTrue(DateTimeUtils.hasOverlap(t1,t2));
+    }
+
+    @Test
+    public void Test_checkNotOverlap_success() {
+        LocalDateTime t1_start = LocalDateTime.now();
+        LocalDateTime t1_end = LocalDateTime.now().plusHours(1);
+        Interval t1 = new Interval(t1_start, t1_end);
+
+        LocalDateTime t2_start = LocalDateTime.now().plusHours(2);
+        LocalDateTime t2_end = LocalDateTime.now().plusHours(4);
+        Interval t2 = new Interval(t2_start, t2_end);
+
+        assertFalse(DateTimeUtils.hasOverlap(t1,t2));
+    }
 }

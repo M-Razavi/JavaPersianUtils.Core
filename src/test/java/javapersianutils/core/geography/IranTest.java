@@ -3,16 +3,34 @@ package javapersianutils.core.geography;
 import org.junit.jupiter.api.Test;
 
 import javax.management.relation.RelationNotFoundException;
-
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class IranTest {
 
+    private static String displayTimeZone(TimeZone tz) {
+
+        long hours = TimeUnit.MILLISECONDS.toHours(tz.getRawOffset());
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(tz.getRawOffset())
+                - TimeUnit.HOURS.toMinutes(hours);
+        // avoid -4:-30 issue
+        minutes = Math.abs(minutes);
+
+        String result = "";
+        if (hours > 0) {
+            result = String.format("(GMT+%d:%02d) %s", hours, minutes, tz.getID());
+        } else {
+            result = String.format("(GMT%d:%02d) %s", hours, minutes, tz.getID());
+        }
+
+        return result;
+    }
+
     @Test
-    public void test_IrangetProvincesCount_IsCorrect() {
+    public void test_IranGetProvincesCount_IsCorrect() {
         assertEquals(31, Iran.getProvinces().size());
     }
 
@@ -59,24 +77,19 @@ class IranTest {
         System.out.println("\nTotal TimeZone ID " + ids.length);
     }
 
-    private static String displayTimeZone(TimeZone tz) {
+    @Test
+    public void test_cityClass_success() {
+        City esfahanCity = new City(
+                "اصفهان",
+                "مبارکه",
+                "مرکزی",
+                "مبارکه",
+                70208);
 
-        long hours = TimeUnit.MILLISECONDS.toHours(tz.getRawOffset());
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(tz.getRawOffset())
-                - TimeUnit.HOURS.toMinutes(hours);
-        // avoid -4:-30 issue
-        minutes = Math.abs(minutes);
-
-        String result = "";
-        if (hours > 0) {
-            result = String.format("(GMT+%d:%02d) %s", hours, minutes, tz.getID());
-        } else {
-            result = String.format("(GMT%d:%02d) %s", hours, minutes, tz.getID());
-        }
-
-        return result;
-
+        assertTrue(esfahanCity.getProvinceName().equalsIgnoreCase("اصفهان"));
+        assertTrue(esfahanCity.getCountyName().equalsIgnoreCase("مبارکه"));
+        assertTrue(esfahanCity.getDistrictName().equalsIgnoreCase("مرکزی"));
+        assertTrue(esfahanCity.getCityName().equalsIgnoreCase("مبارکه"));
+        assertTrue(esfahanCity.getCityDivisionCode()==70208);
     }
-
-
 }

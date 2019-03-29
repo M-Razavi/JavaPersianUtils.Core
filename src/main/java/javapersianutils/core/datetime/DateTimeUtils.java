@@ -11,26 +11,23 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 /**
  * <h1>LocalTimeUtils</h1>
  * The Date Time Utils
+ * Some helper methods for working with georgian calendar
  * <p>
  *
  * @author Mahdi Razavi
  * @version 1.0
  * @since 3/23/2019
  */
-
-/**
- * Some helper methods for working with georgian calendar
- */
 public class DateTimeUtils {
 
     private DateTimeUtils() {
     }
 
-    private static final String iranTimeZoneID = "Asia/Tehran";
+    private static final String IRAN_TIME_ZONE_ID = "Asia/Tehran";
     /**
      * Iran Standard Time
      */
-    private static final TimeZone iranStandardTime = TimeZone.getTimeZone(iranTimeZoneID);
+    private static final TimeZone iranStandardTime = TimeZone.getTimeZone(IRAN_TIME_ZONE_ID);
     /**
      * Epoch represented as LocalTime
      */
@@ -95,5 +92,15 @@ public class DateTimeUtils {
             default:
                 return false;
         }
+    }
+
+    /**
+     * Check t1 has overlap with t1 or not
+     * @param t1 first time
+     * @param t2 second time
+     * @return return true if given period has overlap
+     */
+    public static boolean hasOverlap(Interval t1, Interval t2) {
+        return !t1.getEnd().isBefore(t2.getBegin()) && !t1.getBegin().isAfter(t2.getEnd());
     }
 }
