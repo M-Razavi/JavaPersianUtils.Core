@@ -20,11 +20,11 @@ public class ReplaceArabicChar {
     /**
      * Arabic Ye Char \u0649 = ARABIC LETTER ALEF MAKSURA
      */
-    public static final char ARABIC_YE_Char1 = (char) 1609;
+    public static final char ARABIC_YE_CHAR1 = (char) 1609;
     /**
      * Arabic Ye Char \u064A = ARABIC LETTER YEH
      */
-    public static final char ARABIC_YE_Char2 = (char) 1610;
+    public static final char ARABIC_YE_CHAR2 = (char) 1610;
     /**
      * Persian Ke Char \u06A9 = ARABIC LETTER KEHEH
      */
@@ -47,8 +47,8 @@ public class ReplaceArabicChar {
     public static String replaceArabicChar(String data) {
         return StringUtil.isNullOrWhiteSpace(data) ?
                 "" :
-                data.replace(ARABIC_YE_Char1, PERSIAN_YE_CHAR)
-                        .replace(ARABIC_YE_Char2, PERSIAN_YE_CHAR)
+                data.replace(ARABIC_YE_CHAR1, PERSIAN_YE_CHAR)
+                        .replace(ARABIC_YE_CHAR2, PERSIAN_YE_CHAR)
                         .replace(ARABIC_KE_CHAR, PERSIAN_KE_CHAR)
                         .trim();
     }
