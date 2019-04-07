@@ -3,7 +3,7 @@ package javapersianutils.core.validators;
 
 import java.util.regex.Pattern;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrEmpty;
+import static javapersianutils.core.string.StringUtil.isNullOrEmpty;
 
 /**
  * Validate IBAN

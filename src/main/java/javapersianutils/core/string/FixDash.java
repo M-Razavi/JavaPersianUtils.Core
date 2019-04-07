@@ -1,4 +1,4 @@
-package javapersianutils.core.normalizer;
+package javapersianutils.core.string;
 
 import java.util.regex.Pattern;
 

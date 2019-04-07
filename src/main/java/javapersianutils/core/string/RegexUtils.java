@@ -1,9 +1,9 @@
-package javapersianutils.core.validators;
+package javapersianutils.core.string;
 
 import java.util.regex.Pattern;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrEmpty;
-import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
+import static javapersianutils.core.string.StringUtil.isNullOrEmpty;
+import static javapersianutils.core.string.StringUtil.isNullOrWhiteSpace;
 
 /**
  * Regular expression for checking Farsi language.

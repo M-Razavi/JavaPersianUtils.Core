@@ -2,7 +2,7 @@ package javapersianutils.core.validators;
 
 import java.util.regex.Pattern;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
+import static javapersianutils.core.string.StringUtil.isNullOrWhiteSpace;
 
 /**
  * IranCodes Utils

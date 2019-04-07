@@ -1,6 +1,5 @@
-package javapersianutils.core.normalizer;
+package javapersianutils.core.string;
 
-import org.junit.internal.runners.TestMethod;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

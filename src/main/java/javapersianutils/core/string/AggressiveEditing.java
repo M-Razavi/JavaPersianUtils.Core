@@ -1,4 +1,4 @@
-package javapersianutils.core.normalizer;
+package javapersianutils.core.string;
 
 
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -7,7 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
+import static javapersianutils.core.string.StringUtil.isNullOrWhiteSpace;
 
 /**
  * replace all more than one ! or ? marks with just one or removes all extra kashida and spaces

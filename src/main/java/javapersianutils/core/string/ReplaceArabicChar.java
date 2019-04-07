@@ -1,6 +1,4 @@
-package javapersianutils.core.normalizer;
-
-import javapersianutils.core.validators.StringUtil;
+package javapersianutils.core.string;
 
 /**
  * <h1>ReplaceArabicChar</h1>

@@ -1,4 +1,4 @@
-package javapersianutils.core.validators;
+package javapersianutils.core.string;
 
 /**
  * Created by Mahdi Razavi on 3/4/19-12:03 PM

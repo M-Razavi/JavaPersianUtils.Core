@@ -1,8 +1,8 @@
-package javapersianutils.core.normalizer;
+package javapersianutils.core.string;
 
 import java.text.Normalizer;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
+import static javapersianutils.core.string.StringUtil.isNullOrWhiteSpace;
 
 /**
  * <h1>Fix Diacritics</h1>

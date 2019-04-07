@@ -2,7 +2,7 @@ package javapersianutils.core.validators;
 
 import org.apache.commons.lang3.StringUtils;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrWhiteSpace;
+import static javapersianutils.core.string.StringUtil.isNullOrWhiteSpace;
 import static org.apache.commons.lang3.StringUtils.leftPad;
 
 /**

@@ -5,7 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.regex.Pattern;
 
-import static javapersianutils.core.validators.StringUtil.isNullOrEmpty;
+import static javapersianutils.core.string.StringUtil.isNullOrEmpty;
 
 /**
  * Credit and Debit Card (Shetab) validation
