@@ -19,7 +19,11 @@ script:
 before_deploy:
     - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
     - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
-    - git tag $project_version
+    if git rev-parse "$project_version" >/dev/null 2>&1; then
+       echo "tag exists";
+    else
+       - git tag $project_version;
+    fi
 
 ## Create release in GitHub
 deploy:
