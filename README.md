@@ -11,7 +11,7 @@
 
 
 
-[JavaPersianUtils.Core](https://github.com/M-Razavi/JavaPersianUtils.Core) کتابخانه‌ای است متشکل از متدهای الحاقی کمکی جهت کار با فرهنگ فارسی، در برنامه‌های مبتنی بر Java 8.0  و بالاتر است.
+[JavaPersianUtils.Core](https://github.com/M-Razavi/JavaPersianUtils.Core) کتابخانه‌ای است متشکل از متدهای الحاقی کمکی جهت کار با زبان و تاریخ فارسی، در برنامه‌های مبتنی بر Java 8.0  و بالاتر است.
 این کتابخانه بر مبنای کتابخانه [DNTPersianUtils.Core](https://github.com/VahidN/DNTPersianUtils.Core) توسعه داده شده است.
 و به مرور  تمامی مواردی که در آن وجود دارد برای جاوا پیاده سازی می گردد.
 برای استفاده از آن میتوانید آنرا از Maven Central در یافت کنید:
@@ -28,9 +28,18 @@
 لیست متدها و امکانات این کتابخانه
 -----------------
 
-<!--
+
 |نام متد/امکانات|مثال|خروجی نمونه|
 | -------| :------: | :------: |
+|&#x202b; نرمال کردن متون. پارامتر آن قابلیت ترکیب را دارد. | "'تست'".NormalizePersianText | «تست» |
+| لیست مناطق و استان‌ها | Iran.Provinces | Iran.Provinces لیست تو در توی استان‌ها و شهرهای ایران |
+|آیا عبارت مدنظر حاوی حروف فارسی است؟|"Abc تست".ContainsFarsi()|true|
+|اصلاح ی و ک عربی به فارسی|"می‌شود".ApplyCorrectYeKe()|می‌شود|
+|راست به چپ کردن یک متن ساده مخلوط برای نمایش در محیط‌های چپ به راست مانند فید خوان‌ها|"سلام Abc".ApplyRle()|Abc سلام|
+|محاسبه سن|DateTime.Now.AddYears(-9).GetAge()|9|
+
+<!--
+|مجموعه کلمات بی‌اثر زبان فارسی| PersianStopwords.List | مفید برای تنظیمات جستجوهای تمام متنی |
 |نمایش فارسی روز دریافتی|dt.ToPersianDateTextify()|سه شنبه ۲۱ دی ۱۳۹۵|
 |نمایش دوستانه‌ی یک تاریخ و ساعت انگلیسی به شمسی|dt.ToFriendlyPersianDateTextify()|&#x202b;۱۰ روز قبل، سه شنبه ۲۱ دی ۱۳۹۵، ساعت ۱۰:۲۰|
 |تبدیلگر عدد به حروف|1234567.NumberToText(Language.Persian)|یک میلیون و دویست و سی و چهار هزار و پانصد و شصت و هفت|
@@ -44,14 +53,7 @@
 |تاریخ روزهای ابتدا و انتهای سال شمسی|dt.GetPersianYearStartAndEndDates()|[مثال](/src/DNTPersianUtils.Core.Tests/PersianCultureTests.cs)|
 |تاریخ روزهای ابتدا و انتهای ماه شمسی|dt.GetPersianMonthStartAndEndDates(5)|[مثال](/src/DNTPersianUtils.Core.Tests/PersianCultureTests.cs)|
 |تبدیل عدد انگلیسی به فارسی|123.ToPersianNumbers()|۱۲۳|
-|آیا عبارت مدنظر حاوی حروف فارسی است؟|"Abc تست".ContainsFarsi()|true|
-|اصلاح ی و ک عربی به فارسی|"می‌شود".ApplyCorrectYeKe()|می‌شود|
-|راست به چپ کردن یک متن ساده مخلوط برای نمایش در محیط‌های چپ به راست مانند فید خوان‌ها|"سلام Abc".ApplyRle()|Abc سلام|
-|محاسبه سن|DateTime.Now.AddYears(-9).GetAge()|9|
 |آیا تاریخ و زمان مدنظر آغاز سال نوی شمسی است؟|dt.IsStartOfNewYear()|true/false|
-|مجموعه کلمات بی‌اثر زبان فارسی| PersianStopwords.List | مفید برای تنظیمات جستجوهای تمام متنی |
-|&#x202b; نرمال کردن متون. پارامتر آن قابلیت ترکیب را دارد. | "'تست'".[NormalizePersianText](/src/DNTPersianUtils.Core.Tests/NormalizerTests.cs)(<br>PersianNormalizers.ConvertEnglishQuotes) | «تست» |
-| لیست مناطق و استان‌ها | Iran.Provinces | Iran.Provinces لیست تو در توی استان‌ها و شهرهای ایران |
 | مناسبت‌های تعطیلات رسمی ایران | Iran.Holidays | مناسبت‌های تعطیلات رسمی ایران از سال 1395 تا پایان سال 1398 |
 | دریافت لیست روزهای کاری یک بازه زمانی | IranHolidays.GetBusinessDays() | روزهای کاری ایران از سال 1395 تا پایان سال 1398 |
 |تبدیل تاریخ میلادی به قمری|new DateTime(2018, 08, 31).ToIslamicDay()|new IslamicDay(1439, 12, 19)|
