@@ -46,8 +46,8 @@ public class FixZwnj {
     /**
      * Removes unnecessary zwnj char that are succeeded/preceded by a space
      *
-     * @param text
-     * @return
+     * @param text the text
+     * @return string
      */
     public static String normalizeZwnj(String text) {
         return _matchCleanupZwnj.matcher(text).replaceAll(" ");
@@ -57,8 +57,8 @@ public class FixZwnj {
     /**
      * Converts ه ی to ه‌ی
      *
-     * @param text
-     * @return
+     * @param text the text
+     * @return string
      */
     public static String normalizeYeHeHalfSpace(String text) {
         return _matchYeHeHalfSpace.matcher(text).replaceAll("$1ه‌ی‌$3"); // fix zwnj
