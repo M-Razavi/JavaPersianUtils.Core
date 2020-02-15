@@ -3,35 +3,35 @@ language: java
 
 ## export GPG details
 before_install:
-    - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
-    - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
+  - echo $GPG_SECRET_KEYS | base64 --decode | $GPG_EXECUTABLE --import
+  - echo $GPG_OWNERTRUST | base64 --decode | $GPG_EXECUTABLE --import-ownertrust
 
 install:
-    mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
+  mvn --settings .maven.xml install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 
 ## Build and release to maven central (deploy only when tags are pushed.)
 script:
-    # if [[ $TRAVIS_TAG ]]; then
-    mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease;
-    # fi
+  # if [[ $TRAVIS_TAG ]]; then
+  mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease;
+# fi
 
 ## Get the project version
 before_deploy:
-    - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
-    - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
-    if git rev-parse "$project_version" >/dev/null 2>&1; then
-       echo "tag exists";
-    else
-       - git tag $project_version;
-    fi
+  - mvn help:evaluate -N -Dexpression=project.version|grep -v '\['
+  - export project_version=$(mvn help:evaluate -N -Dexpression=project.version|grep -v '\[')
+  if git rev-parse "$project_version" >/dev/null 2>&1; then
+  echo "tag exists";
+  else
+  - git tag $project_version;
+  fi
 
 ## Create release in GitHub
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
   file:
-             - target/core-$project_version.jar
-             - target/core-$project_version-sources.jar
+    - target/core-$project_version.jar
+    - target/core-$project_version-sources.jar
   skip_cleanup: true
   name: $project_version
   on:
@@ -40,7 +40,7 @@ deploy:
 
 cache:
   directories:
-  - ~/.m2/repository
+    - ~/.m2/repository
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
