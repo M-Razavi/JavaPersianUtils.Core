@@ -15,12 +15,16 @@ public class HumanReadableInteger {
     private static final List<NumberWord> _numberWords = new ArrayList<NumberWord>() {{
         add(new NumberWord(DigitGroup.Ones, Language.English, Arrays.asList("", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine")));
         add(new NumberWord(DigitGroup.Ones, Language.Persian, Arrays.asList("", "یک", "دو", "سه", "چهار", "پنج", "شش", "هفت", "هشت", "نه")));
+
         add(new NumberWord(DigitGroup.Teens, Language.English, Arrays.asList("Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen")));
         add(new NumberWord(DigitGroup.Teens, Language.Persian, Arrays.asList("ده", "یازده", "دوازده", "سیزده", "چهارده", "پانزده", "شانزده", "هفده", "هجده", "نوزده")));
+
         add(new NumberWord(DigitGroup.Tens, Language.English, Arrays.asList("Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety")));
         add(new NumberWord(DigitGroup.Tens, Language.Persian, Arrays.asList("بیست", "سی", "چهل", "پنجاه", "شصت", "هفتاد", "هشتاد", "نود")));
+
         add(new NumberWord(DigitGroup.Hundreds, Language.English, Arrays.asList("", "One Hundred", "Two Hundred", "Three Hundred", "Four Hundred", "Five Hundred", "Six Hundred", "Seven Hundred", "Eight Hundred", "Nine Hundred")));
         add(new NumberWord(DigitGroup.Hundreds, Language.Persian, Arrays.asList("", "یکصد", "دویست", "سیصد", "چهارصد", "پانصد", "ششصد", "هفتصد", "هشتصد", "نهصد")));
+
         add(new NumberWord(DigitGroup.Thousands, Language.English, Arrays.asList("", " Thousand", " Million", " Billion", " Trillion", " Quadrillion", " Quintillion", " Sextillian",
                 " Septillion", " Octillion", " Nonillion", " Decillion", " Undecillion", " Duodecillion", " Tredecillion",
                 " Quattuordecillion", " Quindecillion", " Sexdecillion", " Septendecillion", " Octodecillion", " Novemdecillion",
