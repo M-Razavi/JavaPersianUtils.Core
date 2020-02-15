@@ -1,8 +1,5 @@
 package javapersianutils.core.number;
 
-/**
- * languages
- */
 public enum Language {
 
     // English Language
