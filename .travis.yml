@@ -24,11 +24,11 @@ before_deploy:
 ## Create release in GitHub
 deploy:
   provider: releases
-  api_key: $GITHUB_OAUTH_TOKEN
+  token: $GITHUB_OAUTH_TOKEN
   file:
              - target/core-$project_version.jar
              - target/core-$project_version-sources.jar
-  skip_cleanup: true
+  cleanup: true
   name: $project_version
   on:
     branch: master

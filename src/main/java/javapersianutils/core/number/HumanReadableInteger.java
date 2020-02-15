@@ -2,6 +2,9 @@ package javapersianutils.core.number;
 
 import java.util.*;
 
+/**
+ * The type Human readable integer.
+ */
 public class HumanReadableInteger {
 
     private static final Map<Language, String> _and = new HashMap() {{
@@ -45,8 +48,8 @@ public class HumanReadableInteger {
     /**
      * display a numeric value using the equivalent text
      *
-     * @param number
-     * @param language
+     * @param number   the number
+     * @param language the language
      * @return the equivalent text
      */
     public static String numberToText(int number, Language language) {
@@ -56,8 +59,8 @@ public class HumanReadableInteger {
     /**
      * display a numeric value using the equivalent text
      *
-     * @param number
-     * @param language
+     * @param number   the number
+     * @param language the language
      * @return the equivalent text
      */
     public static String numberToText(Long number, Language language) {
@@ -67,8 +70,8 @@ public class HumanReadableInteger {
     /**
      * display a numeric value using the equivalent text
      *
-     * @param number
-     * @param language
+     * @param number   the number
+     * @param language the language
      * @return the equivalent text
      */
     public static String numberToText(byte number, Language language) {
@@ -78,8 +81,8 @@ public class HumanReadableInteger {
     /**
      * display a numeric value using the equivalent text
      *
-     * @param number
-     * @param language
+     * @param number   the number
+     * @param language the language
      * @return the equivalent text
      */
     public static String numberToText(double number, Language language) {
@@ -89,8 +92,8 @@ public class HumanReadableInteger {
     /**
      * display a numeric value using the equivalent text
      *
-     * @param number
-     * @param language
+     * @param number   the number
+     * @param language the language
      * @return the equivalent text
      */
     public static String numberToText(long number, Language language) {
